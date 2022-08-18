@@ -4,8 +4,8 @@
 
 ### Basic Information
 
-* **Person or organization developing model**: Patrick Hall, `jphall@gwu.edu`
-* **Model date**: August, 2021
+* **Person or organization developing model**: Group 23
+* **Model date**: August 2022
 * **Model version**: 1.0
 * **License**: MIT
 * **Model implementation code**: [DNSC_6301_Example_Project.ipynb](DNSC_6301_Example_Project.ipynb)
