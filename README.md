@@ -4,7 +4,7 @@
 
 ### Basic Information
 
-* **Person or organization developing model**: Group 23
+* **Person or organization developing model**: Group 23 - Bernard Low, Kerry McKeever, Lejla Skahic, Nigel Tinotenda Nyajeka 
 * **Model date**: August 2022
 * **Model version**: 1.0
 * **License**: MIT
@@ -14,6 +14,9 @@
 * **Primary intended uses**: This model is an *example* probability of default classifier, with an *example* use case for determining eligibility for a credit line increase.
 * **Primary intended users**: Students in GWU DNSC 6301 bootcamp.
 * **Out-of-scope use cases**: Any use beyond an educational example is out-of-scope.
+
+### Abstract
+We are considering methods with which to determine the probability of an individual's delinquency. We explore how the utilization of certain variables can create bias within an analysis.
 
 ### Training Data
 
