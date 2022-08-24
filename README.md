@@ -73,7 +73,7 @@ Metrics used to evaluate your final model (AUC and AIR)
 training, validation, and test data
 ○ Provide any plots related to your data or final model -- be sure to label the plots!
 #### Correlation Heatmap
-![Correlation Heatmap](download.png)
+![Correlation Heatmap](heatmap.png)
 
 
 Ethical considerations (6 pts.):
