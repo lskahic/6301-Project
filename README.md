@@ -18,6 +18,8 @@
 ### Abstract
 We are considering methods with which to determine the probability of an individual's delinquency. We explore how the utilization of certain variables can create bias within an analysis.
 
+### Known Caveat
+
 ### Training Data
 
 * Data dictionary: 
