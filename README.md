@@ -78,11 +78,14 @@ Metrics used to evaluate your final model (AUC and AIR)
 ○ State the final values, neatly -- as bullets or a table, of the metrics for all data:
 training, validation, and test data
 ○ Provide any plots related to your data or final model -- be sure to label the plots!
+#### Variable Histograms
+![Variable Histograms](histograms.png)
+
 #### Correlation Heatmap
 ![Correlation Heatmap](heatmap.png)
 
 #### Final Plot
-![Final Heatmap](final_plot.png)
+![Final Plot](final_plot.png)
 
 
 Ethical considerations (6 pts.):
