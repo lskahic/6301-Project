@@ -86,6 +86,7 @@ training, validation, and test data
 
 #### Initital Plot
 ![Initial Plot](initial_plot.png)
+
 ○ Initial test
 
 #### Training Table
@@ -117,6 +118,7 @@ Using new cutoff
 
 #### Final Plot
 ![Final Plot](final_plot.png)
+
 ○ Final test comparing Hispanic/White AIR, using Tree Depth of 6. Relation of training vs validation AUC?
 
 Ethical considerations (6 pts.):
