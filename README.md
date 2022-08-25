@@ -93,6 +93,7 @@ training, validation, and test data
 
 #### Test AUC
 | Test AUC | 0.7438 |
+| ---- | ------------- |
 
 #### Final Plot
 ![Final Plot](final_plot.png)
