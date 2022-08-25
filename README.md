@@ -84,6 +84,10 @@ training, validation, and test data
 #### Correlation Heatmap
 ![Correlation Heatmap](heatmap.png)
 
+#### Initital Plot
+![Initial Plot](initial_plot.png)
+○ Initial test
+
 #### Final Plot
 ![Final Plot](final_plot.png)
 ○ Final test comparing Hispanic/White AIR, using Tree Depth of 6. Relation of training vs validation AUC?
