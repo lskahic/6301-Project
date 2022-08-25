@@ -91,6 +91,9 @@ training, validation, and test data
 #### Training Table
 ![Training Table](training_table.png)
 
+#### Test AUC
+| Test AUC | 0.7438 |
+
 #### Final Plot
 ![Final Plot](final_plot.png)
 ○ Final test comparing Hispanic/White AIR, using Tree Depth of 6. Relation of training vs validation AUC?
