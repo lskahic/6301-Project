@@ -81,6 +81,9 @@ training, validation, and test data
 #### Correlation Heatmap
 ![Correlation Heatmap](heatmap.png)
 
+#### Final Plot
+![Final Heatmap](final_plot.png)
+
 
 Ethical considerations (6 pts.):
 ○ Describe potential negative impacts of using your model:
