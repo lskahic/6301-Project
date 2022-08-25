@@ -98,10 +98,10 @@ training, validation, and test data
 #### Initial AIR/AUC
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
-| White | 0.644 | - |
-| Hispanic | 0.526 | 0.82 |
-| Black | 0.535 | 0.83 |
-| Asian | 0.630 | 0.98 |
+| White | 0.644 |        -        |
+| Hispanic | 0.526 |      0.82      |
+| Black | 0.535 |      0.83      |
+| Asian | 0.630 |      0.98      |
 
 #### Final Plot
 ![Final Plot](final_plot.png)
