@@ -95,6 +95,14 @@ training, validation, and test data
 | Test AUC | 0.7438 |
 | ---- | ------------- |
 
+#### Initial AIR/AUC
+| Race | AUC | AIR (to White) |
+| ---- | --- | -------------- |
+| White | 0.644 | - |
+| Hispanic | 0.526 | 0.82 |
+| Black | 0.535 | 0.83 |
+| Asian | 0.630 | 0.98 |
+
 #### Final Plot
 ![Final Plot](final_plot.png)
 ○ Final test comparing Hispanic/White AIR, using Tree Depth of 6. Relation of training vs validation AUC?
