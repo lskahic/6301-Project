@@ -15,17 +15,6 @@
 * **Primary intended users**: Students in GWU DNSC 6301 bootcamp.
 * **Out-of-scope use cases**: Any use beyond an educational example is out-of-scope.
 
-### Abstract
-We are considering methods with which to determine the probability of an individual's delinquency. We explore how the utilization of certain variables can create bias within an analysis.
-
-### Known Caveats/Ethical Consideration
-
-* Math/Software problems: 
-	     Math - Is 30,000 too small a sample size to provide a definitive answer?
-      
-* Real-world risks: who what where where or how: 
-
-
 ### Training Data
 
 * Data dictionary: 
