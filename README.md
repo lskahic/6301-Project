@@ -57,13 +57,6 @@ Python version: 3.7.13
 sklearn version: 1.0.2
 * **Hyperparameters or other settings of your model**: 
 ```
-best_model = candidate_models[6]['Model']
-fig = plt.figure(figsize=(400, 70))
-_ = tree.plot_tree(best_model,
-                   feature_names=X_names,
-                   class_names=['On time', 'Delinquent'],
-                   filled=True)
-best_model.get_params()
 {'ccp_alpha': 0.0,
  'class_weight': None,
  'criterion': 'gini',
