@@ -71,10 +71,7 @@ sklearn version: 1.0.2
 'splitter': 'best'
 ```
 ### Quantitative Analysis
-Metrics used to evaluate your final model (AUC and AIR)
-○ State the final values, neatly -- as bullets or a table, of the metrics for all data:
-training, validation, and test data
-○ Provide any plots related to your data or final model -- be sure to label the plots!
+
 #### Variable Histograms
 ![Variable Histograms](histograms.png)
 
