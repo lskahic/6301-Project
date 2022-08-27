@@ -53,8 +53,8 @@
 * **Type of model**: Decision Tree 
 * **Software used to implement the model**: Python, scikit-learn
 * **Version of the modeling software**: 
-/ Python version: 3.7.13
-/ sklearn version: 1.0.2
+Python version: 3.7.13,
+sklearn version: 1.0.2
 * **Hyperparameters or other settings of your model**: 
 ```
 'ccp_alpha': 0.0,
