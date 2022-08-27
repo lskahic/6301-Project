@@ -57,12 +57,233 @@ Python version: 3.7.13
 sklearn version: 1.0.2
 * **Hyperparameters or other settings of your model**: 
 ```
-DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='gini',
-                       max_depth=6, max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort='deprecated',
-                       random_state=12345, splitter='best')`
+
+License
+MIT License
+
+Copyright (c) 2021 jphall@gwu.edu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Pythons imports
+[2]
+1s
+from sklearn import tree                                  # sklearn tree model for decision trees
+from sklearn.model_selection import train_test_split      # for partitioning data
+from sklearn.model_selection import cross_val_score       # for cross validation
+from sklearn.metrics import roc_auc_score, accuracy_score # to assess decision tree perforamce
+
+# to upload local files
+import io
+from google.colab import files             
+
+import numpy as np                                   # array, vector, matrix calculations
+import pandas as pd                                  # dataFrame handling
+
+from matplotlib import pyplot as plt                 # plotting
+import seaborn as sns                                # slightly better plotting  
+
+SEED = 12345                                         # ALWAYS use a random seed for better reproducibility
+[3]
+0s
+# print version information 
+import sys
+import sklearn
+version = ".".join(map(str, sys.version_info[:3]))
+print('Python version:', version)
+print('sklearn version:', sklearn.__version__)
+Python version: 3.7.13
+sklearn version: 1.0.2
+Upload training data
+[4]
+23s
+ # special google collab command to upload a file from computer
+uploaded = files.upload()
+
+[ ]
+type(uploaded) # what kind of Python object did we just create?
+dict
+[7]
+0s
+uploaded.keys() # what is stored in that Python object?
+dict_keys(['credit_line_increase.csv'])
+[6]
+0s
+# read uploaded data into a pandas dataframe
+data = pd.read_csv(io.StringIO(uploaded['credit_line_increase.csv'].decode('utf-8')))
+Data Dictionary
+Name	Modeling Role	Measurement Level	Description
+ID	ID	int	unique row indentifier
+LIMIT_BAL	input	float	amount of previously awarded credit
+SEX	demographic information	int	1 = male; 2 = female
+RACE	demographic information	int	1 = hispanic; 2 = black; 3 = white; 4 = asian
+EDUCATION	demographic information	int	1 = graduate school; 2 = university; 3 = high school; 4 = others
+MARRIAGE	demographic information	int	1 = married; 2 = single; 3 = others
+AGE	demographic information	int	age in years
+PAY_0, PAY_2 - PAY_6	inputs	int	history of past payment; PAY_0 = the repayment status in September, 2005; PAY_2 = the repayment status in August, 2005; ...; PAY_6 = the repayment status in April, 2005. The measurement scale for the repayment status is: -1 = pay duly; 1 = payment delay for one month; 2 = payment delay for two months; ...; 8 = payment delay for eight months; 9 = payment delay for nine months and above
+BILL_AMT1 - BILL_AMT6	inputs	float	amount of bill statement; BILL_AMNT1 = amount of bill statement in September, 2005; BILL_AMT2 = amount of bill statement in August, 2005; ...; BILL_AMT6 = amount of bill statement in April, 2005
+PAY_AMT1 - PAY_AMT6	inputs	float	amount of previous payment; PAY_AMT1 = amount paid in September, 2005; PAY_AMT2 = amount paid in August, 2005; ...; PAY_AMT6 = amount paid in April, 2005
+DELINQ_NEXT	target	int	whether a customer's next payment is delinquent (late), 1 = late; 0 = on-time
+Basic Data Analysis
+[ ]
+data.shape # (rows,columns)
+(30000, 26)
+[8]
+0s
+data.columns # names of columns
+Index(['ID', 'LIMIT_BAL', 'SEX', 'RACE', 'EDUCATION', 'MARRIAGE', 'AGE',
+       'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1',
+       'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6',
+       'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6',
+       'DELINQ_NEXT'],
+      dtype='object')
+[ ]
+data.isnull().any() # check for missing values
+ID             False
+LIMIT_BAL      False
+SEX            False
+RACE           False
+EDUCATION      False
+MARRIAGE       False
+AGE            False
+PAY_0          False
+PAY_2          False
+PAY_3          False
+PAY_4          False
+PAY_5          False
+PAY_6          False
+BILL_AMT1      False
+BILL_AMT2      False
+BILL_AMT3      False
+BILL_AMT4      False
+BILL_AMT5      False
+BILL_AMT6      False
+PAY_AMT1       False
+PAY_AMT2       False
+PAY_AMT3       False
+PAY_AMT4       False
+PAY_AMT5       False
+PAY_AMT6       False
+DELINQ_NEXT    False
+dtype: bool
+[ ]
+data.describe() # basic descriptive statistics
+
+Double-click (or enter) to edit
+
+[ ]
+_ = data[data.columns].hist(bins=50, figsize=(15, 15)) # display histograms
+
+[9]
+0s
+# Pearson correlation matrix
+corr = data.corr() 
+corr
+
+Double-click (or enter) to edit
+
+[ ]
+# correlation heatmap
+plt.figure(figsize=(10, 10))
+_ = sns.heatmap(corr, 
+                xticklabels=corr.columns.values,
+                yticklabels=corr.columns.values)
+
+Train decision tree
+[11]
+0s
+# assign basic modeling roles
+# do not put demographic variables into a financial model!
+y_name = 'DELINQ_NEXT'
+X_names = ['LIMIT_BAL', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']
+[12]
+0s
+# partition data for honest assessment
+train_X, valid_test_X, train_y, valid_test_y = train_test_split(data[X_names], data[y_name], test_size=0.5, random_state=SEED) # split off training data
+valid_X, test_X, valid_y, test_y = train_test_split(valid_test_X, valid_test_y, test_size=0.5, random_state=SEED) # split remainder into validation and test
+
+# summarize 
+print('Training data: %i rows and %i columns' % (train_X.shape[0], train_X.shape[1] + 1))
+print('Validation data: %i rows and %i columns' % (valid_X.shape[0], valid_X.shape[1] + 1))
+print('Testing data: %i rows and %i columns' % (test_X.shape[0], test_X.shape[1] + 1))
+
+# housekeeping
+del valid_test_X 
+del valid_test_y
+Training data: 15000 rows and 20 columns
+Validation data: 7500 rows and 20 columns
+Testing data: 7500 rows and 20 columns
+[13]
+4s
+# train decision tree 
+# with validation-based early stopping
+
+max_depth = 12
+candidate_models = {}
+
+for depth in range(0, max_depth):
+
+  clf = tree.DecisionTreeClassifier(max_depth = depth + 1, random_state=SEED)
+  clf.fit(train_X, train_y)
+
+  train_phat = clf.predict_proba(train_X)[:, 1]
+  valid_phat = clf.predict_proba(valid_X)[:, 1]
+
+  train_auc = roc_auc_score(train_y, train_phat) #auc = area under the curve be around .6 to .8
+  valid_auc = roc_auc_score(valid_y, valid_phat)
+
+  cv_scores = cross_val_score(clf, valid_X, valid_y, scoring='roc_auc', cv=5)
+  cv_std = np.std(cv_scores)
+
+  candidate_models[depth + 1] = {}
+  candidate_models[depth + 1]['Model'] = clf
+  candidate_models[depth + 1]['Training AUC'] = train_auc
+  candidate_models[depth + 1]['Validation AUC'] = valid_auc
+  candidate_models[depth + 1]['5-Fold SD'] = cv_std
+[14]
+0s
+# plot tree depth vs. training and validation AUC
+# using simple pandas plotting and matplotlib
+
+candidate_results = pd.DataFrame.from_dict(candidate_models, orient='index')
+fig, ax = plt.subplots(figsize=(8, 8))
+_ = candidate_results[['Training AUC', 'Validation AUC']].plot(title='Iteration Plot',
+                                                               ax=ax)
+_ = ax.set_xlabel('Tree Depth')
+_ = ax.set_ylabel('AUC')
+
+[15]
+0s
+# view same results as a table, using pandas iloc to remove first column of table
+
+candidate_results.iloc[:, 1:]
+
+[17]
+# plot the tree for human interpretation
+
+best_model = candidate_models[6]['Model']
+fig = plt.figure(figsize=(400, 70))
+_ = tree.plot_tree(best_model,
+                   feature_names=X_names,
+                   class_names=['On time', 'Delinquent'],
+                   filled=True)
+best_model.get_params()
+{'ccp_alpha': 0.0,
+ 'class_weight': None,
+ 'criterion': 'gini',
+ 'max_depth': 6,
+ 'max_features': None,
+ 'max_leaf_nodes': None,
+ 'min_impurity_decrease': 0.0,
+ 'min_samples_leaf': 1,
+ 'min_samples_split': 2,
+ 'min_weight_fraction_leaf': 0.0,
+ 'random_state': 12345,
+ 'splitter': 'best'}
 ```
 ### Quantitative Analysis
 Metrics used to evaluate your final model (AUC and AIR)
