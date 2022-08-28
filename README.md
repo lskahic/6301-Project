@@ -75,19 +75,19 @@ sklearn version: 1.0.2
 #### Variable Histograms
 ![Variable Histograms](histograms.png)
 
-○ Histograms showing the distribution of each variable in the data set.
+Histograms showing the distribution of each variable in the data set.
 
 
 #### Correlation Heatmap
 ![Correlation Heatmap](heatmap.png)
 
-○ Heatmap shows a concerning correlation between race and predicted delinquency.
+Heatmap shows a concerning correlation between race and predicted delinquency.
 
 
 #### Initital Plot
 ![Initial Plot](initial_plot.png)
 
-○ Initial plot comparing training and validation AUCs. Depth 6 inititally chosen as it seems to provide a good balance of fairness and accuracy, AUCs diverge greatly after that point.
+Initial plot comparing training and validation AUCs. Depth 6 inititally chosen as it seems to provide a good balance of fairness and accuracy, AUCs diverge greatly after that point.
 
 
 #### Test AUC
@@ -97,7 +97,7 @@ sklearn version: 1.0.2
 | Validation | 0.7496 |
 | Test | 0.7438 |
 
-○ Test to see how well the model will do with completely new data. All results of the AUCs fall within the ideal range of 0.6 to 0.9.
+Test to see how well the model will do with completely new data. All results of the AUCs fall within the ideal range of 0.6 to 0.9.
 
 
 #### Initial Model AUC/AIR
@@ -108,10 +108,10 @@ sklearn version: 1.0.2
 | Black | 0.465 | 0.82 |
 | Asian | 0.568 | 1.00 |
 
-○ For every 1000 white people that were granted credit line increaes, only 760 hispanics received the same. This is below the 80% threshold for bias, and thus a new cutoff needs to be used. An important thing to bear in mind is that while a higher cutoff provides greater accuracy, business needs means we should not stray too far from the standard of 15%.
+For every 1000 white people that were granted credit line increaes, only 760 hispanics received the same. This is below the 80% threshold for bias, and thus a new cutoff needs to be used. An important thing to bear in mind is that while a higher cutoff provides greater accuracy, business needs means we should not stray too far from the standard of 15%.
 
 
-#### Final Model AUC/AIR
+## Final Model AUC/AIR
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
 | White | 0.735 | - |
@@ -119,13 +119,13 @@ sklearn version: 1.0.2
 | Black | 0.626 | 0.85 |
 | Asian | 0.739 | 1.00 |
 
-○ Further calculation showed accuracy at an 18% cutoff provided balance between accuracy and business goals. Using the new cutoff, the ratio of Hispanics to Whites being approved for credit line increases above the 80% threshold.
+Further calculation showed accuracy at an 18% cutoff provided balance between accuracy and business goals. Using the new cutoff, the ratio of Hispanics to Whites being approved for credit line increases above the 80% threshold.
 
 
 #### Final Plot
 ![Final Plot](final_plot.png)
 
-○ Final plot including Hispanic/White AIR for testing purposes due to them being identified as the race group that had the most concerning AIR. Depth 6 continues to provide the best balance between fairness and accuracy.
+Final plot including Hispanic/White AIR for testing purposes due to them being identified as the race group that had the most concerning AIR. Depth 6 continues to provide the best balance between fairness and accuracy.
 
 
 ### Ethical considerations
