@@ -111,7 +111,7 @@ Test to see how well the model will do with completely new data. All results of 
 For every 1000 white people that were granted credit line increaes, only 760 hispanics received the same. This is below the 80% threshold for bias, and thus a new cutoff needs to be used. An important thing to bear in mind is that while a higher cutoff provides greater accuracy, business needs means we should not stray too far from the standard of 15%.
 
 
-## Final Model AUC/AIR
+#### Final Model AUC/AIR
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
 | White | 0.735 | - |
