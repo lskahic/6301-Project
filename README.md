@@ -77,6 +77,7 @@ sklearn version: 1.0.2
 
 ○ Histograms showing the distribution of each variable in the data set.
 
+
 #### Correlation Heatmap
 ![Correlation Heatmap](heatmap.png)
 
@@ -89,12 +90,6 @@ sklearn version: 1.0.2
 ○ Initial plot comparing training and validation AUCs. Depth 6 inititally chosen as it seems to provide a good balance of fairness and accuracy, AUCs diverge greatly after that point.
 
 
-#### Training Table
-![Training Table](training_table.png)
-
-○ Looking at the plot values in table form, the maximum Validation AUC does indeed occur at depth 6.
-
-
 #### Test AUC
 | AUC | Score |
 | ---- | ------------- |
@@ -105,7 +100,7 @@ sklearn version: 1.0.2
 ○ Test to see how well the model will do with completely new data. All results of the AUCs fall within the ideal range of 0.6 to 0.9.
 
 
-#### Initial AIR/AUC
+#### Initial Model AUC/AIR
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
 | White | 0.568 | - |
@@ -116,7 +111,7 @@ sklearn version: 1.0.2
 ○ For every 1000 white people that were granted credit line increaes, only 760 hispanics received the same. This is below the 80% threshold for bias, and thus a new cutoff needs to be used. An important thing to bear in mind is that while a higher cutoff provides greater accuracy, business needs means we should not stray too far from the standard of 15%.
 
 
-#### Final AIR/AUC
+#### Final Model AUC/AIR
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
 | White | 0.735 | - |
@@ -132,9 +127,12 @@ sklearn version: 1.0.2
 
 ○ Final plot including Hispanic/White AIR for testing purposes due to them being identified as the race group that had the most concerning AIR. Depth 6 continues to provide the best balance between fairness and accuracy.
 
-Ethical considerations
+
+### Ethical considerations
 There are many potential negative impacts of using our model. The data used to train this model used demographic information, which inherently brings bias into the creation of this model tree. The variables used of race and gender, for exasmple, demonstrate the concept of disparate treatment, where we are actively making a business decision to include demographic information in our models. While we addressed that we are doing this for learning purposes and this is not a model that will be published, using demographic data incorporates ingrained biases from outdated structures that discriminated against people of color, for example. While this is inherently unfair for one, it is also illegal. The members of our group could be completely discredited or heavily fined for this decision. This data decision would make our software completely wrong.  
+
 Additionally, by working in a group of like minded graduate students, our group was at risk of succumbing to the idea of confirmation bias, as well as group think. Although we came from different backgrounds, our similar knowledge levels and lack of experience in this field brought the risk of blind agreement with our partners without considering the consequences of certain decisions. This would also put our model at risk of being completely inconclusive and wrong.
  Real world risks. For similar reasons as described above, the mistakes made in the creation of the model would cause drastic real work risks. By including data that does not include the full picture of who pays back their loans, wrong conclusions are made as to who deserves these loans resulting in discriminatory outcomes. This means loans are not dealt to well deserving people, which in turn have drastic effects on their lives, but also our economy and beyond. 
 Potential Uncertainties related to the impacts of our model: Math or software/ real world risks. The potential uncertainties related to the impacts of our model are numerous. First, it should be addressed that even if we correctly avoided using demographic data, it is quite impossible to avoid incorporating variables of bias as a whole. We cannot confirm that the variables are not introducing bias. Additionally, data as a whole cannot be blindly trusted and is not objective. Data records all our mistakes, biases, regrets. Data is not always accurate, and can be miscoded, corrupted, hacked or just wrong. As mentioned above, this leads to wrong conclusions and discriminatory outcomes. 
-	Initially our task was to determine how certain metrics impact whether people receive a credit line increase or not. In inspecting this data, we determined that using certain variables causes the results to be inherently biased towards certain protected groups. In order to create a more fair, yet performing model, we utilized a decision tree and determined that using a tree depth of six creates the most holistic analysis where there is lower chance of those who receive loans to default on payment, but still diminishes bias against protected groups. We focused on the hispanic to white population AIR because the ratio was below the acceptable value of 80%. The 80% value means that for every 1000 people who get their credit line increased, only 800 hispanics would receive the same result, which is the standard accepted cutoff. By increasing this cutoff of probability of default from 15% to 18%, we received both a fairer and more accurate model. 
+
+Initially our task was to determine how certain metrics impact whether people receive a credit line increase or not. In inspecting this data, we determined that using certain variables causes the results to be inherently biased towards certain protected groups. In order to create a more fair, yet performing model, we utilized a decision tree and determined that using a tree depth of six creates the most holistic analysis where there is lower chance of those who receive loans to default on payment, but still diminishes bias against protected groups. We focused on the hispanic to white population AIR because the ratio was below the acceptable value of 80%. The 80% value means that for every 1000 people who get their credit line increased, only 800 hispanics would receive the same result, which is the standard accepted cutoff. By increasing this cutoff of probability of default from 15% to 18%, we received both a fairer and more accurate model. 
