@@ -90,7 +90,7 @@ Heatmap shows a concerning correlation between race and predicted delinquency.
 Initial plot comparing training and validation AUCs. Depth 6 inititally chosen as it seems to provide a good balance of fairness and accuracy, AUCs diverge greatly after that point.
 
 
-#### Test AUC
+#### AUC Values
 | AUC | Score |
 | ---- | ------------- |
 | Training | 0.7837 |
