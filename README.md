@@ -73,24 +73,24 @@ sklearn version: 1.0.2
 ### Quantitative Analysis
 
 #### Variable Histograms
-![Variable Histograms](images/histograms.png)
+![Variable Histograms](histograms.png)
 
 ○ Histograms showing the distribution of each variable in the data set.
 
 #### Correlation Heatmap
-![Correlation Heatmap](images/heatmap.png)
+![Correlation Heatmap](heatmap.png)
 
 ○ Heatmap shows a concerning correlation between race and predicted delinquency.
 
 
 #### Initital Plot
-![Initial Plot](images/initial_plot.png)
+![Initial Plot](initial_plot.png)
 
 ○ Initial plot comparing training and validation AUCs. Depth 6 inititally chosen as it seems to provide a good balance of fairness and accuracy, AUCs diverge greatly after that point.
 
 
 #### Training Table
-![Training Table](images/training_table.png)
+![Training Table](training_table.png)
 
 ○ Looking at the plot values in table form, the maximum Validation AUC does indeed occur at depth 6.
 
@@ -125,7 +125,7 @@ sklearn version: 1.0.2
 
 
 #### Final Plot
-![Final Plot](images/final_plot.png)
+![Final Plot](final_plot.png)
 
 ○ Final plot including Hispanic/White AIR for testing purposes due to them being identified as the race group that had the most concerning AIR. Depth 6 continues to provide the best balance between fairness and accuracy.
 
