@@ -70,7 +70,7 @@ sklearn version: 1.0.2
 'random_state': 12345,
 'splitter': 'best'
 ```
-### Quantitative Analysis
+## Quantitative Analysis
 
 #### Variable Histograms
 ![Variable Histograms](histograms.png)
@@ -111,7 +111,7 @@ Test to see how well the model will do with completely new data. All results of 
 For every 1000 white people that were granted credit line increaes, only 760 hispanics received the same. This is below the 80% threshold for bias, and thus a new cutoff needs to be used. An important thing to bear in mind is that while a higher cutoff provides greater accuracy, business needs means we should not stray too far from the standard of 15%.
 
 
-##### Final Model AUC/AIR
+#### Final Model AUC/AIR
 | Race | AUC | AIR (to White) |
 | ---- | --- | -------------- |
 | White | 0.735 | - |
@@ -128,7 +128,7 @@ Further calculation showed accuracy at an 18% cutoff provided balance between ac
 Final plot including Hispanic/White AIR for testing purposes due to them being identified as the race group that had the most concerning AIR. Depth 6 continues to provide the best balance between fairness and accuracy.
 
 
-### Ethical considerations
+## Ethical considerations
 There are many potential negative impacts of using our model. The data used to train this model used demographic information, which inherently brings bias into the creation of this model tree. The variables used of race and gender, for exasmple, demonstrate the concept of disparate treatment, where we are actively making a business decision to include demographic information in our models. While we addressed that we are doing this for learning purposes and this is not a model that will be published, using demographic data incorporates ingrained biases from outdated structures that discriminated against people of color, for example. While this is inherently unfair for one, it is also illegal. The members of our group could be completely discredited or heavily fined for this decision. This data decision would make our software completely wrong.  
 
 Additionally, by working in a group of like minded graduate students, our group was at risk of succumbing to the idea of confirmation bias, as well as group think. Although we came from different backgrounds, our similar knowledge levels and lack of experience in this field brought the risk of blind agreement with our partners without considering the consequences of certain decisions. This would also put our model at risk of being completely inconclusive and wrong.
