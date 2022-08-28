@@ -96,10 +96,13 @@ sklearn version: 1.0.2
 
 
 #### Test AUC
-| Test AUC | 0.7438 |
+| AUC | Score |
 | ---- | ------------- |
+| Training | 0.7837 |
+| Validation | 0.7496 |
+| Test | 0.7438 |
 
-○ Test to see how well the model will do with completely new data. A result of 0.7438 falls within the ideal range of 0.6 to 0.9.
+○ Test to see how well the model will do with completely new data. All results of the AUCs fall within the ideal range of 0.6 to 0.9.
 
 
 #### Initial AIR/AUC
